@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="stucomroyal.listaJugadores" id="listaJugadores0">
+  <void property="lista_jugadores">
+   <void method="add">
+    <object class="stucomroyal.Jugador">
+     <void property="cartas">
+      <object class="stucomroyal.listaCartas"/>
+     </void>
+     <void property="password">
+      <string>petu</string>
+     </void>
+     <void property="usuario">
+      <string>ricard</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>
