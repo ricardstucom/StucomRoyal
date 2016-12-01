@@ -53,6 +53,7 @@ public class Jugador {
         return cartas;
     }
 
+
     public void setCartas(listaCartas cartas) {
         this.cartas = cartas;
     }
@@ -61,6 +62,12 @@ public class Jugador {
     public String toString() {
         return "Jugador{" + "usuario=" + usuario + ", password=" + password + ", trofeos=" + trofeos + ", cartas=" + cartas + '}';
     }
+
+    
+
+    
+
+    
     
     
 }

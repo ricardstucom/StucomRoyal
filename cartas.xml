@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="stucomroyal.listaCartas" id="listaCartas0">
+  <void property="lista_carta">
+   <void method="add">
+    <object class="stucomroyal.Tropa">
+     <void property="costeElixir">
+      <int>6</int>
+     </void>
+     <void property="nivelAtaque">
+      <double>100.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>100</int>
+     </void>
+     <void property="nombre">
+      <string>chispitas</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Tropa">
+     <void property="costeElixir">
+      <int>4</int>
+     </void>
+     <void property="nivelAtaque">
+      <double>200.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>50</int>
+     </void>
+     <void property="nombre">
+      <string>mago</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Tropa">
+     <void property="costeElixir">
+      <int>3</int>
+     </void>
+     <void property="nivelAtaque">
+      <double>50.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>80</int>
+     </void>
+     <void property="nombre">
+      <string>tesla</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Hechizo">
+     <void property="costeElixir">
+      <int>3</int>
+     </void>
+     <void property="modo">
+      <boolean>true</boolean>
+     </void>
+     <void property="nivelAlcance">
+      <double>100.0</double>
+     </void>
+     <void property="nombre">
+      <string>furia</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Hechizo">
+     <void property="costeElixir">
+      <int>4</int>
+     </void>
+     <void property="nivelAlcance">
+      <double>100.0</double>
+     </void>
+     <void property="nombre">
+      <string>congelar</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Hechizo">
+     <void property="costeElixir">
+      <int>2</int>
+     </void>
+     <void property="modo">
+      <boolean>true</boolean>
+     </void>
+     <void property="nivelAlcance">
+      <double>20.0</double>
+     </void>
+     <void property="nombre">
+      <string>rayo</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Estructura">
+     <void property="costeElixir">
+      <int>4</int>
+     </void>
+     <void property="nivelDefensa">
+      <double>200.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>100</int>
+     </void>
+     <void property="nombre">
+      <string>Inferno</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Estructura">
+     <void property="costeElixir">
+      <int>2</int>
+     </void>
+     <void property="nivelDefensa">
+      <double>100.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>50</int>
+     </void>
+     <void property="nombre">
+      <string>Petu</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Estructura">
+     <void property="costeElixir">
+      <int>8</int>
+     </void>
+     <void property="nivelDefensa">
+      <double>250.0</double>
+     </void>
+     <void property="nivelVida">
+      <int>300</int>
+     </void>
+     <void property="nombre">
+      <string>Eskapulats</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

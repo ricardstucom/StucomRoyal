@@ -29,4 +29,17 @@ public class listaJugadores implements Serializable {
     public void setlista_jugadores(ArrayList<Jugador> lista_jugadores) {
         this.lista_jugadores = lista_jugadores;
     }
+
+    public ArrayList<Jugador> getLista_jugadores() {
+        return lista_jugadores;
+    }
+    
+    public Jugador encontrarJugador(String usuario, String password){
+     for(Jugador jugador : lista_jugadores){
+         if(jugador.getUsuario().equals(usuario)&& jugador.getPassword().equals(password) ){
+             return jugador;
+         }
+     }
+return null;
+ }
 }
