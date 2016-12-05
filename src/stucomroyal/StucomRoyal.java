@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package stucomroyal;
 
+import java.util.ArrayList;
 import tools.Fichero;
 import tools.InputData;
 
@@ -46,20 +42,11 @@ public class StucomRoyal {
                     loginJugador();
                     break;
                 case 3:
-
+                    batalla();
                     break;
                 case 4:
-
                     break;
-                case 5:
-
-                    break;
-                case 6:
-
-                    break;
-                case 7:
-
-                    break;
+                
                 case 0:
                     System.out.println("Hasta luegoooo!!");
                     break;
@@ -73,12 +60,10 @@ public class StucomRoyal {
         System.out.println("*****STUCOMROYAL****");
         System.out.println("1.Alta Jugador");
         System.out.println("2.Login Jugador");
-        System.out.println("3.Presupuestos pendientes ");
-        System.out.println("4.Listado de presupuestos de un cliente determinado");
-        System.out.println("5.Listado de presupuestos rechazados");
-        System.out.println("6.Listado de clientes, donde aparezca también el total de presupuestos\n"
-                + "que tiene cada uno.");
-        System.out.println("7.Cambiar estado de un presupuesto.");
+        System.out.println("3.Empezar batalla ");
+      
+       System.out.println("4.Ranking ");
+        
         System.out.println("0. Salir");
 
     }
@@ -90,24 +75,29 @@ public class StucomRoyal {
 
         usuario = InputData.pedirCadena("Usuario: ");
         password = InputData.pedirCadena("Password: ");
-
+        while (usuario.equals("")) {
+            usuario = InputData.pedirCadena("Usuario: ");
+        }
+        while (password.equals("")) {
+            password = InputData.pedirCadena("Password: ");
+        }
         Jugador c = new Jugador(usuario, password, trofeos);
         misJugadores.registrarJugador(c);
         miFichero.grabar(misJugadores);
     }
 
     private static void altaCarta() {
-        Tropa t1 = new Tropa(100.0, "chispitas", 6, 100);
-        Tropa t2 = new Tropa(200.0, "mago", 4, 50);
-        Tropa t3 = new Tropa(50.0, "tesla", 3, 80);
+        Tropa t1 = new Tropa(100, "chispitas", 1, 40);
+        Tropa t2 = new Tropa(200, "mago", 2, 50);
+        Tropa t3 = new Tropa(50, "tesla", 3, 80);
 
-        Hechizo h1 = new Hechizo(100.0, true, "furia", 3, 0);
-        Hechizo h2 = new Hechizo(100.0, false, "congelar", 4, 0);
-        Hechizo h3 = new Hechizo(20.0, true, "rayo", 2, 0);
+        Hechizo h1 = new Hechizo(100, true, "furia", 3, 50);
+        Hechizo h2 = new Hechizo(100, false, "congelar", 4, 30);
+        Hechizo h3 = new Hechizo(20, true, "rayo", 2, 10);
 
-        Estructura e1 = new Estructura(200.0, "Inferno", 4, 100);
-        Estructura e2 = new Estructura(100.0, "Petu", 2, 50);
-        Estructura e3 = new Estructura(250.0, "Eskapulats", 8, 300);
+        Estructura e1 = new Estructura(100, "Inferno", 4, 100);
+        Estructura e2 = new Estructura(50, "Petu", 2, 95);
+        Estructura e3 = new Estructura(60, "Eskapulats", 5, 80);
 
         misCartas.registrarCarta(t1);
         misCartas.registrarCarta(t2);
@@ -143,71 +133,369 @@ public class StucomRoyal {
             }
         } else {
             System.out.println("Login Correcto");
+            System.out.println("--------------------");
             String nombre = usuario;
 
             int contador = 0;
+            for (Carta j : jugador.getCartas().getLista_carta()) {
+                contador++;
+            }
+            int numero = 6 - contador;
+            while (numero > 0) {
+                for (Carta cliente : misCartas.getLista_carta()) {
 
-            for (Carta cliente : misCartas.getLista_carta()) {
+                    String quieres;
+                    System.out.println("Nombre: " + cliente.getNombre());
+                    System.out.println("Coste Elixir: " + cliente.getCosteElixir());
+                    System.out.println("Nivel Vida: " + cliente.getNivelVida());
 
-                String quieres;
-                System.out.println("Nombre: " + cliente.getNombre());
-                System.out.println("Coste Elixir: " + cliente.getCosteElixir());
-                System.out.println("Nivel Vida: " + cliente.getNivelVida());
+                    System.out.println("----------------------------------------");
+                    quieres = InputData.pedirCadena("Quieres esta carta?: ");
+                    if (quieres.equalsIgnoreCase("SI")) {
+
+                        //Comprobar si tiene cartas, si no tiene entra aqui
+                        if (jugador.getCartas().getLista_carta().size() == 0) {
+                            System.out.println("agregada");
+                            Carta carta = misCartas.encontrarCarta(cliente.getNombre());
+
+                            jugador.getCartas().registrarCarta(carta);
+                            miFichero.grabar(misJugadores);
+                        } //Si ya tiene cartas entra aqui
+                        else {
+                            // System.out.println(jugador.getUsuario() + " " + jugador.getCartas().getLista_carta().size());
+
+                            //Aqui comprobar cuantas cartas tiene para saber las que le faltan
+                            for (Carta j : jugador.getCartas().getLista_carta()) {
+                                Carta copia = new Carta(j.getNombre(), j.getCosteElixir(), j.getNivelVida());
+                            }
+
+                            for (Carta copia : jugador.getCartas().getLista_carta()) {
+
+                                // int quedan = jugador.getCartas().getLista_carta().size() - contador;
+                                System.out.println("-------------------------");
+                                System.out.println("Te quedan por elegir " + numero + " cartas");
+                                System.out.println("-------------------------");
+                                if (cliente.getNombre().equals(copia.getNombre())) {
+                                    System.out.println("La carta :" + cliente.getNombre() + " ya la tienes");
+                                    System.out.println("-------------------------");
+
+                                } else {
+                                    System.out.println("La carta: " + cliente.getNombre() + " ha sido agregada.");
+                                    numero--;
+                                    //Busco la carta y la devuelvo para grabarla
+                                    Carta carta = misCartas.encontrarCarta(cliente.getNombre());
+                                    //quedan = jugador.getCartas().getLista_carta().size() - contador;
+                                    System.out.println("Te quedan por elegir " + numero + " cartas");
+                                    jugador.getCartas().registrarCarta(carta);
+                                    miFichero.grabar(misJugadores);
+
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            System.out.println("Has llegado al máximo de cartas disponibles");
+            for (Carta j : jugador.getCartas().getLista_carta()) {
+                System.out.println("Nombre: " + j.getNombre());
+                System.out.println("Coste Elixir: " + j.getCosteElixir());
+                System.out.println("Nivel Vida: " + j.getNivelVida());
 
                 System.out.println("----------------------------------------");
-                quieres = InputData.pedirCadena("Quieres esta carta?: ");
-                if (quieres.equalsIgnoreCase("SI")) {
-                    if(jugador.getCartas().getLista_carta().size()==0){
-                         System.out.println("agregada");
-                              Carta carta = misCartas.encontrarCarta(cliente.getNombre());
-
-                            jugador.getCartas().registrarCarta(carta);
-                               miFichero.grabar(misJugadores);
-                    }else{
-                    System.out.println(jugador.getUsuario() + " " + jugador.getCartas().getLista_carta().size());
-                     for (Carta j : jugador.getCartas().getLista_carta()) {
-                         
-                          int quedan = jugador.getCartas().getLista_carta().size() - contador;
-                          System.out.println("Te quedan por elegir " + quedan + " cartas");
-                          contador++;
-                          if (cliente.getNombre().equals(j.getNombre())) {
-                                System.out.println("Esta carta ya la tienes");
-                                contador--;
-                                break;
-                            }else{
-                              System.out.println("agregada");
-                              
-                              Carta carta = misCartas.encontrarCarta(cliente.getNombre());
-                              quedan = jugador.getCartas().getLista_carta().size() - contador;
-                             System.out.println("Te quedan por elegir " + quedan + " cartas");
-                            jugador.getCartas().registrarCarta(carta);
-                               miFichero.grabar(misJugadores);
-                        break;
-//                            contador++;
-//                            
-                                
-
-                               
-                          }
-                         
-                     }
-                            
-                    //Comprobar si la carta que quiere agregar ya la tiene
-                   
-                       
-                              
-                                
-                            
-
-                        
-                    }  
-
-                }
-
             }
-           
+
         }
 
     }
 
+    public static void batalla() {
+        //Creo dos arrays para guardar las 3 cartas de cada jugador, de esta forma no modifico las oficiales
+        ArrayList<Carta> cartasJugador1 = new ArrayList<Carta>();
+        ArrayList<Carta> cartasJugador2 = new ArrayList<Carta>();
+        
+        //Login de los dos jugadores con un boolean cada uno para comprobar que los dos hacen login correcto
+        String usuario1;
+         String usuario2;
+        String password1;
+         String password2;
+        boolean comprobado1 = false;
+        boolean comprobado2 = false;
+        while (comprobado1 == false) {
+            System.out.println("-----------------JUGADOR 1--------------");
+            usuario1 = InputData.pedirCadena("Usuario: ");
+            password1 = InputData.pedirCadena("Password: ");
+            System.out.println("----------------------------------");
+            Jugador jugador1 = misJugadores.encontrarJugador(usuario1, password1);
+
+            if (jugador1 == null) {
+                System.out.println("Este usuario no existe");
+
+            } else {
+                System.out.println("Usuario correcto");
+                comprobado1 = true;
+                int max = 0;
+                //Compruebo que elige 3 cartas y no más
+                while (cartasJugador1.size() < 3) {
+                    System.out.println("-----------ESTAS SON TUS CARTAS-------------");
+                    System.out.println("Escoje 3 cartas de tu mazo");
+                    System.out.println("--------------------------------------");
+                    for (Carta player1 : jugador1.getCartas().getLista_carta()) {
+                        String elegir;
+                        System.out.println("------------------------");
+                        System.out.println(player1.getNombre());
+                        System.out.println(player1.getCosteElixir());
+                        System.out.println("------------------------");
+                        elegir = InputData.pedirCadena("Quieres incorporar esta carta a tu mazo?: ");
+                        if (elegir.equalsIgnoreCase("SI")) {
+                            max = max + player1.getCosteElixir();
+                            //Compruebo que máximo las 3 cartas elegidas suman 10 elixir
+                            if (max > 10) {
+                                System.out.println("Has alcanzado el máximo de elixir");
+                                max = max - player1.getCosteElixir();
+                            } else {
+
+                                Carta carta = misCartas.encontrarCarta(player1.getNombre());
+                                cartasJugador1.add(carta);
+
+                            }
+
+                        }
+                    }
+
+                }
+                System.out.println("Has llegado a tu numero máximo de cartas");
+                //Muestro las cartas que ha elegido
+                System.out.println("Estan son tus cartas:");
+                for (int i = 0; i < cartasJugador1.size(); i++) {
+                    System.out.println(cartasJugador1.get(i));
+                }
+
+            }
+        }
+        while (comprobado2 == false) {
+            System.out.println("-----------------JUGADOR 2--------------");
+            usuario2 = InputData.pedirCadena("Usuario: ");
+            password2 = InputData.pedirCadena("Password: ");
+            System.out.println("----------------------------------");
+            Jugador jugador2 = misJugadores.encontrarJugador(usuario2, password2);
+            if (jugador2 == null) {
+                System.out.println("Este usuario no existe");
+
+            } else {
+                System.out.println("Usuario correcto");
+                comprobado2 = true;
+                int max = 0;
+
+                while (cartasJugador2.size() < 3) {
+                    System.out.println("-----------ESTAS SON TUS CARTAS-------------");
+                    System.out.println("Escoje 3 cartas de tu mazo");
+                    System.out.println("--------------------------------------");
+                    for (Carta player2 : jugador2.getCartas().getLista_carta()) {
+                        String elegir;
+                        System.out.println("------------------------");
+                        System.out.println(player2.getNombre());
+                        System.out.println(player2.getCosteElixir());
+                        System.out.println("------------------------");
+                        elegir = InputData.pedirCadena("Quieres incorporar esta carta a tu mazo?: ");
+                        if (elegir.equalsIgnoreCase("SI")) {
+                            max = max + player2.getCosteElixir();
+                            if (max > 10) {
+                                System.out.println("Has alcanzado el máximo de elixir");
+                                max = max - player2.getCosteElixir();
+                            } else {
+
+                                Carta carta = misCartas.encontrarCarta(player2.getNombre());
+                                cartasJugador2.add(carta);
+
+                            }
+
+                        }
+                    }
+
+                }
+                System.out.println("Has llegado a tu numero máximo de cartas");
+                System.out.println("Estan son tus cartas:");
+                for (int i = 0; i < cartasJugador2.size(); i++) {
+                    System.out.println(cartasJugador2.get(i));
+                }
+            }
+        }
+        
+//        System.out.println(cartasJugador1);
+
+        //Numero random para saber quien ataca primero
+        
+        
+        int turno = (int) (Math.random() * 2);
+        System.out.println(turno);
+//        for (int i = 0; i < cartasJugador1.size(); i++) {
+//            for (int j = 0; j < cartasJugador2.size(); j++) {
+//
+//                if (cartasJugador1.get(i) instanceof Tropa) {
+//                  
+//                        cartasJugador2.get(j).setNivelVida(cartasJugador2.get(j).getNivelVida()-((Tropa)cartasJugador1.get(i)).getNivelAtaque());
+//
+//                    System.out.println("tropa");
+//                  
+//                   
+//                    
+//                    
+//
+//                }else{
+//                    System.out.println("es de otra");
+//                }
+//               
+//            }
+//
+//        }
+if(turno == 1){
+for (int i = 0; i < cartasJugador1.size(); i++) {
+    if(cartasJugador1.get(i) instanceof Tropa){
+        cartasJugador2.get(i).setNivelVida(cartasJugador2.get(i).getNivelVida()-(((Tropa)cartasJugador1.get(i)).getNivelAtaque())/2);
+        System.out.println("----------------------------");
+        System.out.println("Ataca :"+cartasJugador1.get(i).getNombre());
+        System.out.println("Nivel de Ataque :"+(((Tropa)cartasJugador1.get(i)).getNivelAtaque()));
+        System.out.println("Contricante :"+cartasJugador2.get(i).getNombre());
+        System.out.println("Vida Restante :"+cartasJugador2.get(i).getNivelVida());
+    }
+        if(cartasJugador1.get(i) instanceof Estructura){
+            for (int j = 0; j < cartasJugador1.size(); j++) {
+                System.out.println("----------------------------");
+                 System.out.println("Carta :"+cartasJugador1.get(i).getNombre());
+            System.out.println("Vida Antes :"+cartasJugador1.get(i).getNivelVida());
+                cartasJugador1.get(j).setNivelVida(((Estructura)cartasJugador1.get(i)).getNivelDefensa()+8);
+                System.out.println("Vida Después :"+cartasJugador1.get(i).getNivelVida());
+            }
+        }
+        if(cartasJugador1.get(i) instanceof Hechizo){
+             
+             boolean dame=(((Hechizo)cartasJugador1.get(i)).getModo());
+             if(dame==true){
+                 System.out.println("----------------------------");
+                 System.out.println("Modo Ataque");
+                 System.out.println("Ataca :"+cartasJugador1.get(i).getNombre());
+                 System.out.println("Nivel Ataque :"+(((Hechizo)cartasJugador1.get(i)).getNivelAlcance())*2/3);
+                 for (int j = 0; j < cartasJugador2.size(); j++) {
+                     System.out.println("----------------------------");
+                      System.out.println("Defiende :"+cartasJugador2.get(i).getNombre());
+                     System.out.println("Vida Antes :"+cartasJugador2.get(i).getNivelVida());
+                cartasJugador2.get(j).setNivelVida(cartasJugador2.get(j).getNivelVida() -(((Hechizo)cartasJugador1.get(i)).getNivelAlcance())*2/3);
+            System.out.println("Vida Después :"+cartasJugador2.get(i).getNivelVida());
+                 }
+             }else{
+                 System.out.println("----------------------------");
+                 System.out.println("Modo Defensa");
+                 System.out.println("Ataca :"+cartasJugador1.get(i).getNombre());
+                 System.out.println("Nivel Ataque :"+(((Hechizo)cartasJugador1.get(i)).getNivelAlcance())*2/3);
+                 for (int j = 0; j < cartasJugador1.size(); j++) {
+                     System.out.println("----------------------------");
+                     System.out.println("Defiende :"+cartasJugador2.get(i).getNombre());
+                     System.out.println("Vida Antes :"+cartasJugador2.get(i).getNivelVida());
+                cartasJugador1.get(j).setNivelVida(cartasJugador1.get(j).getNivelVida() +(((Hechizo)cartasJugador1.get(i)).getNivelAlcance())*2/3);
+            System.out.println("Vida Después :"+cartasJugador2.get(i).getNivelVida());
+            System.out.println("----------------------------");
+                 }
+             }
+            
+        }
+    
+    
+    
+    
+}
+}
+
+if(turno == 0){
+for (int i = 0; i < cartasJugador2.size(); i++) {
+    if(cartasJugador2.get(i) instanceof Tropa){
+        cartasJugador1.get(i).setNivelVida(cartasJugador1.get(i).getNivelVida()-(((Tropa)cartasJugador2.get(i)).getNivelAtaque())/2);
+        System.out.println("----------------------------");
+        System.out.println("Ataca :"+cartasJugador2.get(i).getNombre());
+        System.out.println("Nivel de Ataque :"+(((Tropa)cartasJugador2.get(i)).getNivelAtaque()));
+        System.out.println("Contricante :"+cartasJugador1.get(i).getNombre());
+        System.out.println("Vida Restante :"+cartasJugador1.get(i).getNivelVida());
+        System.out.println("----------------------------");
+    }
+        if(cartasJugador2.get(i) instanceof Estructura){
+            for (int j = 0; j < cartasJugador2.size(); j++) {
+                System.out.println("----------------------------");
+                System.out.println("Carta :"+cartasJugador2.get(i).getNombre());
+            System.out.println("Vida Antes :"+cartasJugador2.get(i).getNivelVida());
+                cartasJugador2.get(j).setNivelVida(((Estructura)cartasJugador2.get(i)).getNivelDefensa()+8);
+                System.out.println("Vida Después :"+cartasJugador2.get(i).getNivelVida());
+            }
+        }
+        if(cartasJugador2.get(i) instanceof Hechizo){
+             
+             boolean dame=(((Hechizo)cartasJugador2.get(i)).getModo());
+             if(dame==true){
+                 System.out.println("----------------------------");
+                 System.out.println("Modo Ataque");
+                 System.out.println("Ataca :"+cartasJugador2.get(i).getNombre());
+                 System.out.println("Nivel Ataque :"+(((Hechizo)cartasJugador2.get(i)).getNivelAlcance())*2/3);
+                 System.out.println("----------------------------");
+                 for (int j = 0; j < cartasJugador1.size(); j++) {
+                     System.out.println("Defiende :"+cartasJugador1.get(i).getNombre());
+                     System.out.println("Vida Antes :"+cartasJugador1.get(i).getNivelVida());
+                cartasJugador1.get(j).setNivelVida(cartasJugador1.get(j).getNivelVida() -(((Hechizo)cartasJugador2.get(i)).getNivelAlcance())*2/3);
+                     System.out.println("Vida Después :"+cartasJugador1.get(i).getNivelVida());
+                     
+            }
+             }
+             }else{
+            System.out.println("----------------------------");
+            System.out.println("Modo Defensa");
+                 System.out.println("Ataca :"+cartasJugador2.get(i).getNombre());
+                 System.out.println("Nivel Ataque :"+(((Hechizo)cartasJugador2.get(i)).getNivelAlcance())*2/3);
+                 System.out.println("----------------------------");
+                 for (int j = 0; j < cartasJugador2.size(); j++) {
+                      System.out.println("Defiende :"+cartasJugador1.get(i).getNombre());
+                     System.out.println("Vida Antes :"+cartasJugador1.get(i).getNivelVida());
+                cartasJugador2.get(j).setNivelVida(cartasJugador2.get(j).getNivelVida() +(((Hechizo)cartasJugador2.get(i)).getNivelAlcance())*2/3);
+                System.out.println("Vida Después :"+cartasJugador1.get(i).getNivelVida());
+                System.out.println("----------------------------");
+            }
+             }
+            
+        }
+    
+    
+    
+    
+}
+int totalVida1=0;
+int totalVida2=0;
+for (int j = 0; j < cartasJugador1.size(); j++) {
+    totalVida1 += cartasJugador1.get(j).getNivelVida();
+    
+}
+for (int j = 0; j < cartasJugador2.size(); j++) {
+    totalVida2 += cartasJugador2.get(j).getNivelVida();
+    
+}
+        System.out.println("---------FINAL-------");
+        if(totalVida1>totalVida2){
+           // jugador1.setTrofeo(1);
+            System.out.println("Ganador Jugador 1");
+            System.out.println("Vida Final Jugador 1 :"+totalVida1);
+            System.out.println("Vida Final Jugador 2 :"+totalVida2);
+        }
+        else{
+            if(totalVida1<totalVida2){
+            System.out.println("Ganador Jugador 2 ");
+            System.out.println("Vida Final Jugador 1 :"+totalVida1);
+            System.out.println("Vida Final Jugador 2 :"+totalVida2);
+        }
+        }
+        if(totalVida1==totalVida2){
+            System.out.println("Empate");
+            System.out.println("Vida Final Jugador 1 :"+totalVida1);
+            System.out.println("Vida Final Jugador 2 :"+totalVida2);
+        }
+    }
+
+    
 }

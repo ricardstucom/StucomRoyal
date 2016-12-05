@@ -10,7 +10,7 @@ package stucomroyal;
  * @author 46989075y
  */
 public class Hechizo extends Carta {
-    private double nivelAlcance;
+    private int nivelAlcance;
     private boolean modo;
 
     
@@ -19,23 +19,25 @@ public class Hechizo extends Carta {
         
     }
     
-    public Hechizo(double nivelAlcance, boolean modo, String nombre, int costeElixir, int nivelVida) {
+    public Hechizo(int nivelAlcance, boolean modo, String nombre, int costeElixir, int nivelVida) {
         super(nombre, costeElixir, nivelVida);
         this.nivelAlcance = nivelAlcance;
         this.modo = modo;
     }
 
-    public double getNivelAlcance() {
+    public int getNivelAlcance() {
         return nivelAlcance;
     }
 
-    public void setNivelAlcance(double nivelAlcance) {
+    public void setNivelAlcance(int nivelAlcance) {
         this.nivelAlcance = nivelAlcance;
     }
 
-    public boolean isModo() {
+    public boolean getModo() {
         return modo;
     }
+
+   
 
     public void setModo(boolean modo) {
         this.modo = modo;

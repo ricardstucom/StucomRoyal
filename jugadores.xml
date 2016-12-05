@@ -8,15 +8,19 @@
       <object class="stucomroyal.listaCartas" id="listaCartas0">
        <void property="lista_carta">
         <void method="add">
-         <object class="stucomroyal.Tropa">
-          <void property="costeElixir">
-           <int>6</int>
+         <object class="stucomroyal.Tropa" id="Tropa0">
+          <void class="stucomroyal.Tropa" method="getField">
+           <string>nivelAtaque</string>
+           <void method="set">
+            <object idref="Tropa0"/>
+            <int>100</int>
+           </void>
           </void>
-          <void property="nivelAtaque">
-           <double>100.0</double>
+          <void property="costeElixir">
+           <int>1</int>
           </void>
           <void property="nivelVida">
-           <int>100</int>
+           <int>40</int>
           </void>
           <void property="nombre">
            <string>chispitas</string>
@@ -24,34 +28,42 @@
          </object>
         </void>
         <void method="add">
-         <object class="stucomroyal.Tropa">
-          <void property="costeElixir">
-           <int>4</int>
+         <object class="stucomroyal.Tropa" id="Tropa1">
+          <void class="stucomroyal.Tropa" method="getField">
+           <string>nivelAtaque</string>
+           <void method="set">
+            <object idref="Tropa1"/>
+            <int>50</int>
+           </void>
           </void>
-          <void property="nivelAtaque">
-           <double>200.0</double>
-          </void>
-          <void property="nivelVida">
-           <int>50</int>
-          </void>
-          <void property="nombre">
-           <string>mago</string>
-          </void>
-         </object>
-        </void>
-        <void method="add">
-         <object class="stucomroyal.Tropa">
           <void property="costeElixir">
            <int>3</int>
-          </void>
-          <void property="nivelAtaque">
-           <double>50.0</double>
           </void>
           <void property="nivelVida">
            <int>80</int>
           </void>
           <void property="nombre">
            <string>tesla</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="stucomroyal.Tropa" id="Tropa2">
+          <void class="stucomroyal.Tropa" method="getField">
+           <string>nivelAtaque</string>
+           <void method="set">
+            <object idref="Tropa2"/>
+            <int>200</int>
+           </void>
+          </void>
+          <void property="costeElixir">
+           <int>2</int>
+          </void>
+          <void property="nivelVida">
+           <int>50</int>
+          </void>
+          <void property="nombre">
+           <string>mago</string>
           </void>
          </object>
         </void>
@@ -64,7 +76,10 @@
            <boolean>true</boolean>
           </void>
           <void property="nivelAlcance">
-           <double>100.0</double>
+           <int>100</int>
+          </void>
+          <void property="nivelVida">
+           <int>50</int>
           </void>
           <void property="nombre">
            <string>furia</string>
@@ -77,7 +92,10 @@
            <int>4</int>
           </void>
           <void property="nivelAlcance">
-           <double>100.0</double>
+           <int>100</int>
+          </void>
+          <void property="nivelVida">
+           <int>30</int>
           </void>
           <void property="nombre">
            <string>congelar</string>
@@ -93,97 +111,39 @@
            <boolean>true</boolean>
           </void>
           <void property="nivelAlcance">
-           <double>20.0</double>
+           <int>20</int>
+          </void>
+          <void property="nivelVida">
+           <int>10</int>
           </void>
           <void property="nombre">
            <string>rayo</string>
           </void>
          </object>
         </void>
-        <void method="add">
-         <object class="stucomroyal.Tropa">
-          <void property="costeElixir">
-           <int>4</int>
-          </void>
-          <void property="nivelAtaque">
-           <double>200.0</double>
-          </void>
-          <void property="nivelVida">
-           <int>50</int>
-          </void>
-          <void property="nombre">
-           <string>mago</string>
-          </void>
-         </object>
-        </void>
-        <void method="add">
-         <object class="stucomroyal.Tropa">
-          <void property="costeElixir">
-           <int>3</int>
-          </void>
-          <void property="nivelAtaque">
-           <double>50.0</double>
-          </void>
-          <void property="nivelVida">
-           <int>80</int>
-          </void>
-          <void property="nombre">
-           <string>tesla</string>
-          </void>
-         </object>
-        </void>
-        <void method="add">
-         <object class="stucomroyal.Hechizo">
-          <void property="costeElixir">
-           <int>3</int>
-          </void>
-          <void property="modo">
-           <boolean>true</boolean>
-          </void>
-          <void property="nivelAlcance">
-           <double>100.0</double>
-          </void>
-          <void property="nombre">
-           <string>furia</string>
-          </void>
-         </object>
-        </void>
-        <void method="add">
-         <object class="stucomroyal.Hechizo">
-          <void property="costeElixir">
-           <int>4</int>
-          </void>
-          <void property="nivelAlcance">
-           <double>100.0</double>
-          </void>
-          <void property="nombre">
-           <string>congelar</string>
-          </void>
-         </object>
-        </void>
-        <void method="add">
-         <object class="stucomroyal.Hechizo">
-          <void property="costeElixir">
-           <int>2</int>
-          </void>
-          <void property="modo">
-           <boolean>true</boolean>
-          </void>
-          <void property="nivelAlcance">
-           <double>20.0</double>
-          </void>
-          <void property="nombre">
-           <string>rayo</string>
-          </void>
-         </object>
-        </void>
+       </void>
+      </object>
+     </void>
+     <void property="password">
+      <string>123</string>
+     </void>
+     <void property="usuario">
+      <string>jugador1</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="stucomroyal.Jugador">
+     <void property="cartas">
+      <object class="stucomroyal.listaCartas" id="listaCartas1">
+       <void property="lista_carta">
         <void method="add">
          <object class="stucomroyal.Estructura">
           <void property="costeElixir">
            <int>4</int>
           </void>
           <void property="nivelDefensa">
-           <double>200.0</double>
+           <int>100</int>
           </void>
           <void property="nivelVida">
            <int>100</int>
@@ -199,10 +159,10 @@
            <int>2</int>
           </void>
           <void property="nivelDefensa">
-           <double>100.0</double>
+           <int>50</int>
           </void>
           <void property="nivelVida">
-           <int>50</int>
+           <int>95</int>
           </void>
           <void property="nombre">
            <string>Petu</string>
@@ -210,18 +170,77 @@
          </object>
         </void>
         <void method="add">
-         <object class="stucomroyal.Estructura">
-          <void property="costeElixir">
-           <int>8</int>
+         <object class="stucomroyal.Tropa" id="Tropa3">
+          <void class="stucomroyal.Tropa" method="getField">
+           <string>nivelAtaque</string>
+           <void method="set">
+            <object idref="Tropa3"/>
+            <int>100</int>
+           </void>
           </void>
-          <void property="nivelDefensa">
-           <double>250.0</double>
+          <void property="costeElixir">
+           <int>1</int>
           </void>
           <void property="nivelVida">
-           <int>300</int>
+           <int>40</int>
           </void>
           <void property="nombre">
-           <string>Eskapulats</string>
+           <string>chispitas</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="stucomroyal.Tropa" id="Tropa4">
+          <void class="stucomroyal.Tropa" method="getField">
+           <string>nivelAtaque</string>
+           <void method="set">
+            <object idref="Tropa4"/>
+            <int>200</int>
+           </void>
+          </void>
+          <void property="costeElixir">
+           <int>2</int>
+          </void>
+          <void property="nivelVida">
+           <int>50</int>
+          </void>
+          <void property="nombre">
+           <string>mago</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="stucomroyal.Hechizo">
+          <void property="costeElixir">
+           <int>3</int>
+          </void>
+          <void property="modo">
+           <boolean>true</boolean>
+          </void>
+          <void property="nivelAlcance">
+           <int>100</int>
+          </void>
+          <void property="nivelVida">
+           <int>50</int>
+          </void>
+          <void property="nombre">
+           <string>furia</string>
+          </void>
+         </object>
+        </void>
+        <void method="add">
+         <object class="stucomroyal.Hechizo">
+          <void property="costeElixir">
+           <int>4</int>
+          </void>
+          <void property="nivelAlcance">
+           <int>100</int>
+          </void>
+          <void property="nivelVida">
+           <int>30</int>
+          </void>
+          <void property="nombre">
+           <string>congelar</string>
           </void>
          </object>
         </void>
@@ -229,10 +248,10 @@
       </object>
      </void>
      <void property="password">
-      <string>2</string>
+      <string>123</string>
      </void>
      <void property="usuario">
-      <string>2</string>
+      <string>jugador2</string>
      </void>
     </object>
    </void>

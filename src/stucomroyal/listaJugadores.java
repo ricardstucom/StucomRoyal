@@ -42,4 +42,12 @@ public class listaJugadores implements Serializable {
      }
 return null;
  }
+//    public void  agregarTrofeos(Jugador c, int trofeos){
+//     for(Jugador jugador : lista_jugadores){
+//         c.setTrofeos(0);
+//     }
+//         if(jugador.getUsuario().equals(usuario)&& jugador.getPassword().equals(password) ){
+//             
+//         }
+//     }
 }
