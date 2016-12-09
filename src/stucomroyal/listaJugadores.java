@@ -33,7 +33,14 @@ public class listaJugadores implements Serializable {
     public ArrayList<Jugador> getLista_jugadores() {
         return lista_jugadores;
     }
-    
+   
+    public void definirTrofeos (Jugador p, int trofeos){
+        for(Jugador juga : lista_jugadores){
+            if(p.getUsuario().equals(juga.getUsuario())){
+                juga.setTrofeos(juga.getTrofeos()+trofeos);
+            }
+        }
+    }
     public Jugador encontrarJugador(String usuario, String password){
      for(Jugador jugador : lista_jugadores){
          if(jugador.getUsuario().equals(usuario)&& jugador.getPassword().equals(password) ){
@@ -42,12 +49,16 @@ public class listaJugadores implements Serializable {
      }
 return null;
  }
-//    public void  agregarTrofeos(Jugador c, int trofeos){
-//     for(Jugador jugador : lista_jugadores){
-//         c.setTrofeos(0);
-//     }
-//         if(jugador.getUsuario().equals(usuario)&& jugador.getPassword().equals(password) ){
-//             
-//         }
-//     }
+     public Jugador encontrarTrofeos(){
+     for(Jugador jugador : lista_jugadores){
+         
+             return jugador;
+         
+     }
+return null;
+     }
+    
 }
+
+
+

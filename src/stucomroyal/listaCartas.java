@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class listaCartas implements Serializable {
     private ArrayList<Carta>lista_carta;
+    
     public listaCartas(){
         lista_carta = new ArrayList<>();
     }
